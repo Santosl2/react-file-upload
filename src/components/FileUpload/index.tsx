@@ -28,7 +28,7 @@ export function FileUpload({ onUpload }: IFileUploadProps) {
             isDragActive={isDragActive}
             isDragReject={isDragReject}
           >
-            <input {...getInputProps()} />
+            <input {...getInputProps()} data-testid="input_upload" />
             {renderErrorMessage(isDragActive, isDragReject)}
           </DropContainer>
         );

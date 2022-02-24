@@ -97,7 +97,7 @@ export function Upload() {
   }
 
   return (
-    <Container>
+    <Container data-testid="jest_upload">
       <Content>
         <FileUpload onUpload={handleUpload} />
         {!!uploadedFiles.length && (
