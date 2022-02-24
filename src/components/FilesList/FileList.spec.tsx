@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { IFileUploadProps } from "interfaces/IFileUpload.interface";
 import { FilesList } from ".";
 
@@ -20,6 +20,8 @@ let fakeData: IFileUploadProps[] = [
   },
 ];
 
+const mockDelete = jest.fn();
+
 describe("File List test", () => {
   it("renders correctly", () => {
     render(<FilesList files={fakeData} handleDelete={() => {}} />);
@@ -27,7 +29,16 @@ describe("File List test", () => {
     expect(screen.getByText("Excluir")).toBeTruthy();
   });
 
-  it("preview image should appear", () => {
+  it("should be able delete uploaded file", () => {
+    render(<FilesList files={fakeData} handleDelete={mockDelete} />);
+
+    const btnDelete = screen.getByText("Excluir");
+    fireEvent.click(btnDelete);
+
+    expect(mockDelete).toBeCalled();
+  });
+
+  it("image name should appear", () => {
     render(<FilesList files={fakeData} handleDelete={() => {}} />);
 
     expect(screen.getByText(fakeData[0].name)).toBeTruthy();

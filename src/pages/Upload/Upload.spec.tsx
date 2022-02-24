@@ -1,5 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Upload } from ".";
+// eslint-disable-next-line jest/no-mocks-import
+import "../../__mocks__/DOM";
 
 describe("Upload test", () => {
   it("renders correctly", () => {
@@ -11,9 +13,6 @@ describe("Upload test", () => {
 
   it("should be able possible to upload file", async () => {
     render(<Upload />);
-
-    window.URL.createObjectURL = jest.fn().mockImplementation(() => "url");
-    window.URL.revokeObjectURL = jest.fn().mockImplementation(() => "url");
 
     const inputEl = screen.getByTestId("input_upload");
 
