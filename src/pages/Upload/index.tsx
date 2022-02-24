@@ -43,11 +43,9 @@ export function Upload() {
   }
 
   function updateProgressFiles(id: string = "", payload: any): void {
-    const newUploadedFiles = uploadedFiles.map((file) => {
-      return id === file.id ? { ...file, ...payload } : file;
-    });
-
-    setUploadedFiles(newUploadedFiles);
+    setUploadedFiles((prev) =>
+      prev.map((file) => (file.id === id ? { ...file, ...payload } : file))
+    );
   }
 
   function allProcessUpload(uploadedFile: IFileUploadProps): void {
