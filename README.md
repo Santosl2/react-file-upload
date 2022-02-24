@@ -2,7 +2,7 @@
 
 Baseado em um vídeo de Diego Fernandes (Rocketseat)
 
-Implementação com a API do Imgur desenvolvida por mim
+Implementação com a API do Imgur e testes desenvolvido por mim
 
 ## Bibliotecas usadas:
 
